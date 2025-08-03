@@ -26,13 +26,14 @@ class MyService: Service() {
         startId: Int,
     ): Int {
         log("onStartCommand ")
+        val start = intent?.getIntExtra(EXTRA_START, 0) ?: 0
         scope.launch {
-            for (i in 0..10) {
+            for (i in start..start + 10) {
                 delay(1000)
                 log(i.toString())
             }
         }
-        return super.onStartCommand(intent, flags, startId)
+        return START_REDELIVER_INTENT
 
     }
 
@@ -52,8 +53,11 @@ class MyService: Service() {
 
     companion object {
 
-        fun newIntent(context: Context): Intent {
-            return Intent(context, MyService::class.java)
+        private const val EXTRA_START = "start"
+        fun newIntent(context: Context, number: Int): Intent {
+            return Intent(context, MyService::class.java).apply {
+                putExtra(EXTRA_START, number)
+            }
         }
     }
 }
