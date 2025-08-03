@@ -25,7 +25,7 @@ class MyService: Service() {
         flags: Int,
         startId: Int,
     ): Int {
-        log("onStartCommand")
+        log("onStartCommand ")
         scope.launch {
             for (i in 0..10) {
                 delay(1000)
