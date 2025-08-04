@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+<!-- ForegroundService -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+<!-- JobService   -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<!-- JobIntentService   -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
 
     <application
@@ -37,6 +41,12 @@
 
         <service
             android:name=".MyJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service android:name=".MyIntentService2"/>
+
+        <service
+            android:name=".MyJobIntentService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
