@@ -43,7 +43,7 @@ class MyJobIntentService : JobIntentService() {
 
 
     companion object {
-        private const val KEY_PAGE = "page"
+        const val KEY_PAGE = "page"
         private const val JOB_ID = 123
 
         fun enqueue(context: Context, page: Int) {
